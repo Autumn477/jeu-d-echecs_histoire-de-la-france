@@ -98,10 +98,18 @@ body {
   display: block;
 }
 
-h1 {
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #f0d9b5; /* Couleur de fond similaire à l'échiquier */
+  padding: 10px 0;
   text-align: center;
+}
+
+h1 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin: 0;
   font-family: 'Verdana', sans-serif;
   color: #333;
 }
