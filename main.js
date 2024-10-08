@@ -815,3 +815,83 @@ function showAlert(message) {
        alert.style.display="none";
   },3000);
 }
+
+// Fonction pour afficher la flashcard quand une pièce est déposée
+function showFlashcard(squareId) {
+  // Cache toutes les flashcards
+  const allFlashcards = document.querySelectorAll('.flashcard');
+  allFlashcards.forEach(card => card.style.display = 'none');
+
+  // Affiche la flashcard liée à la case sélectionnée
+  const flashcard = document.getElementById('flashcard-' + squareId);
+  if (flashcard) {
+    flashcard.style.display = 'block';
+  }
+}
+
+// Fonction pour révéler la réponse quand la question est cliquée
+document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('question')) {
+    const answer = e.target.nextElementSibling;
+    if (answer) {
+      answer.style.display = 'block';
+    }
+  }
+});
+
+// Appel de la fonction showFlashcard quand une pièce est déplacée
+function drop(ev) {
+  ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  let [pieceId, startingSquareId] = data.split("|");
+  let legalSquaresJson = ev.dataTransfer.getData("application/json");
+  let legalSquares = JSON.parse(legalSquaresJson);
+
+  const piece = document.getElementById(pieceId);
+  const pieceColor = piece.getAttribute("color");
+  const pieceType = piece.classList[1];
+
+  const destinationSquare = ev.currentTarget;
+  let destinationSquareId = destinationSquare.id;
+
+  legalSquares = isMoveValidAgainstCheck(legalSquares, startingSquareId, pieceColor, pieceType);
+
+  // Gestion spéciale pour le roi (et échec)
+  if (pieceType == "king") {
+    let isCheck = isKingInCheck(destinationSquareId, pieceColor, boardSquaresArray);
+    if (isCheck) return;
+    isWhiteTurn ? (whiteKingSquare = destinationSquareId) : (blackKingSquare = destinationSquareId);
+  }
+
+  // Déplacement légal
+  let squareContent = getPieceAtSquare(destinationSquareId, boardSquaresArray);
+  if (squareContent.pieceColor == "blank" && legalSquares.includes(destinationSquareId)) {
+    destinationSquare.appendChild(piece);
+    isWhiteTurn = !isWhiteTurn;
+    updateBoardSquaresArray(startingSquareId, destinationSquareId, boardSquaresArray);
+    checkForCheckMate();
+
+    // Affiche la flashcard liée à la case
+    showFlashcard(destinationSquareId);
+    return;
+  }
+
+  // Gestion de la capture
+  if (squareContent.pieceColor != "blank" && legalSquares.includes(destinationSquareId)) {
+    let children = destinationSquare.children;
+    for (let i = 0; i < children.length; i++) {
+      if (!children[i].classList.contains('coordinate')) {
+        destinationSquare.removeChild(children[i]);
+      }
+    }
+    destinationSquare.appendChild(piece);
+    isWhiteTurn = !isWhiteTurn;
+    updateBoardSquaresArray(startingSquareId, destinationSquareId, boardSquaresArray);
+    checkForCheckMate();
+
+    // Affiche la flashcard liée à la case
+    showFlashcard(destinationSquareId);
+    return;
+  }
+}
+
