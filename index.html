@@ -2,16 +2,18 @@
 <html>
   <head>
     <title>Chess Board</title>
-      <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="chessBoard">        
-      <!-- Add the pawn div element -->
-      <div class="square white">
-        <div class="piece rook" color="black"  >
-            <img src="Black-Rook.png" alt="pawn" >
+    <!-- Conteneur principal pour l'échiquier et les flashcards -->
+    <div class="main-container">
+      <div class="chessBoard">        
+        <!-- Add the pawn div element -->
+        <div class="square white">
+          <div class="piece rook" color="black">
+              <img src="Black-Rook.png" alt="pawn">
           </div>
-      </div>
+        </div>
       <div class="square black">
         <div class="piece knight" color="black" >
             <img src="Black-Knight.png" alt="pawn" >
@@ -253,34 +255,37 @@
            </div>
       </div>
     </div>
-     <!-- Add the jQuery library -->
 
+      <!-- Section pour les flashcards fixes à droite -->
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard-e4" style="display:none;">
+          <div class="question">Quelle était la principale fonction de Philippe Pétain pendant le régime de Vichy ?</div>
+          <div class="answer" style="display:none;">Il était le chef de l'État français.</div>
+        </div>
+      
+        <div class="flashcard" id="flashcard-e5" style="display:none;">
+          <div class="question">Quand la rafle du Vel d'Hiv a-t-elle eu lieu ?</div>
+          <div class="answer" style="display:none;">Les 16 et 17 juillet 1942.</div>
+        </div>
+      
+        <div class="flashcard" id="flashcard-f5" style="display:none;">
+          <div class="question">Qui était le chef de la Gestapo en France ?</div>
+          <div class="answer" style="display:none;">Klaus Barbie.</div>
+        </div>
+      
+        <div class="flashcard" id="flashcard-d6" style="display:none;">
+          <div class="question">Quel mouvement de résistance était dirigé par Jean Moulin ?</div>
+          <div class="answer" style="display:none;">Le Conseil national de la Résistance (CNR).</div>
+        </div>
+      
+        <div class="flashcard" id="flashcard-c3" style="display:none;">
+          <div class="question">Que s'est-il passé à Montoire en octobre 1940 ?</div>
+          <div class="answer" style="display:none;">Pétain rencontre Hitler pour discuter de la collaboration.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="main.js"></script>
-  <!-- Flashcards section -->
-<div class="flashcard" id="flashcard-e4" style="display:none;">
-  <div class="question">Quelle était la principale fonction de Philippe Pétain pendant le régime de Vichy ?</div>
-  <div class="answer" style="display:none;">Il était le chef de l'État français.</div>
-</div>
-
-<div class="flashcard" id="flashcard-e5" style="display:none;">
-  <div class="question">Quand la rafle du Vel d'Hiv a-t-elle eu lieu ?</div>
-  <div class="answer" style="display:none;">Les 16 et 17 juillet 1942.</div>
-</div>
-
-<div class="flashcard" id="flashcard-f5" style="display:none;">
-  <div class="question">Qui était le chef de la Gestapo en France ?</div>
-  <div class="answer" style="display:none;">Klaus Barbie.</div>
-</div>
-
-<div class="flashcard" id="flashcard-d6" style="display:none;">
-  <div class="question">Quel mouvement de résistance était dirigé par Jean Moulin ?</div>
-  <div class="answer" style="display:none;">Le Conseil national de la Résistance (CNR).</div>
-</div>
-
-<div class="flashcard" id="flashcard-c3" style="display:none;">
-  <div class="question">Que s'est-il passé à Montoire en octobre 1940 ?</div>
-  <div class="answer" style="display:none;">Pétain rencontre Hitler pour discuter de la collaboration.</div>
-</div>
-
   </body>
 </html>
