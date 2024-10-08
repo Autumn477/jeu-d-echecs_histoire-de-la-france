@@ -3,97 +3,42 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  }
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw; /* Largeur totale de la page (échiquier + flashcards) */
+  max-width: 1200px;
+}
+
 .chessBoard {
-  width:80vw;
-  height: 80vw;
-  margin: 0 auto;
+  width: 65vw; /* Largeur ajustée de l'échiquier pour faire place aux flashcards */
+  height: 65vw; /* Hauteur égale à la largeur pour garder un échiquier carré */
   display: flex;
   flex-wrap: wrap;
 }
-.square {
-  width:12.5%;
-  height: 12.5%;
-  float: left;
+
+.flashcard-container {
+  width: 25vw; /* Espace réservé pour les flashcards à droite de l'échiquier */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  position: relative;
-}
-.white {
-  background-color: #f0d9b5;
-}
-.black {
-  background-color: #b58863;
-}
-.coordinate {
-  height:auto;
-  display:flex;
-  bottom: 4%;
-  left:4%;
-  position: absolute;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.rank {
-  top:4%;
-  right:4%;
-  left:auto;
-}
-.whiteText {
-  color:#f0d9b5;
-}
-.blackText {
-  color:#b58863;
-}
-.piece {
-  width:100%;
-  z-index: 1;
-  cursor: pointer;
-}
-.piece img {
-  max-width: 100%;
-  width:100%;
-  height: auto;
 }
 
-
-@media (min-width:600px) {
-  .chessBoard {
-      width:600px;
-      height: 600px;
-  }
-}
-@media (max-width:600px) {
-  .coordinate {
-    font-size: 8px;
-  }
-  /* Styles des flashcards */
 .flashcard {
-  width: 300px;
+  width: 100%; /* Les flashcards occupent toute la largeur du conteneur */
   padding: 20px;
-  margin: 20px auto;
+  margin-bottom: 10px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
   text-align: center;
-  cursor: pointer;
   display: none; /* Par défaut, les flashcards sont cachées */
-}
-
-.flashcard .question {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.flashcard .answer {
-  color: #007bff;
-  display: none; /* La réponse est cachée par défaut */
 }
 
 .flashcard.active {
   display: block;
-}
-
 }
