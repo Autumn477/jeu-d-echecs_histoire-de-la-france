@@ -69,4 +69,31 @@ body {
   .coordinate {
     font-size: 8px;
   }
+  /* Styles des flashcards */
+.flashcard {
+  width: 300px;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  display: none; /* Par défaut, les flashcards sont cachées */
+}
+
+.flashcard .question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.flashcard .answer {
+  color: #007bff;
+  display: none; /* La réponse est cachée par défaut */
+}
+
+.flashcard.active {
+  display: block;
+}
+
 }
